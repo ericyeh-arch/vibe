@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vibe Code 網頁上架互動指南</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero" id="top">
+      <img class="hero__image" src="assets/ppt-image-1.png" alt="Vibe Code 網頁上架示意圖" />
+      <div class="hero__shade"></div>
+      <nav class="topbar" aria-label="主導覽">
+        <a class="brand" href="#top">Vibe Code Pages</a>
+        <div class="topbar__links">
+          <a href="#story">重點</a>
+          <a href="#workflow">流程</a>
+          <a href="#deploy">部署</a>
+          <a href="#check">驗收</a>
+        </div>
+      </nav>
+      <div class="hero__content">
+        <p class="eyebrow">YOUTUBE 影片整理</p>
+        <h1>用 Vibe Code 生成網頁，再用 GitHub Pages 免費上架</h1>
+        <p class="hero__copy">
+          來源：程式猿（AFA）影片，長度 4:17，上傳日期 2025-12-06。
+          核心目標是讓本機靜態網站變成可分享的公開網址。
+        </p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#workflow">開始看流程</a>
+          <a class="button button--ghost" href="#check">直接做檢查</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro section" id="story">
+        <div class="section__header">
+          <p class="section__number">02</p>
+          <h2>這支影片解決的是作品分享的最後一哩路</h2>
+        </div>
+        <div class="intro__grid">
+          <article>
+            <h3>問題</h3>
+            <p>
+              Vibe Coding 可以快速產生 HTML、CSS、JavaScript，但只在本機開啟時，
+              作品還不能被朋友或客戶看到。
+            </p>
+          </article>
+          <article>
+            <h3>方法</h3>
+            <ul>
+              <li>先用 AI 編輯器產生一頁式靜態網站</li>
+              <li>確認輸出檔案可以直接在瀏覽器開啟</li>
+              <li>透過 GitHub Pages 取得公開 URL</li>
+            </ul>
+          </article>
+          <article>
+            <h3>限制</h3>
+            <p>GitHub Pages 適合靜態網站，不適合需要後端資料庫的動態網站。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="workflow section" id="workflow">
+        <div class="section__header">
+          <p class="section__number">03</p>
+          <h2>完整流程可以拆成四個可檢查的階段</h2>
+        </div>
+        <div class="stepper" role="tablist" aria-label="上架流程">
+          <button class="stepper__tab is-active" type="button" data-step="0" role="tab" aria-selected="true">1 下提示詞</button>
+          <button class="stepper__tab" type="button" data-step="1" role="tab" aria-selected="false">2 產出檔案</button>
+          <button class="stepper__tab" type="button" data-step="2" role="tab" aria-selected="false">3 建立 Repository</button>
+          <button class="stepper__tab" type="button" data-step="3" role="tab" aria-selected="false">4 啟用 Pages</button>
+        </div>
+        <div class="step-panel" id="stepPanel" aria-live="polite"></div>
+      </section>
+
+      <section class="prompt section">
+        <div class="section__header">
+          <p class="section__number">04</p>
+          <h2>提示詞要同時約束語言、題材與部署形式</h2>
+        </div>
+        <div class="prompt__layout">
+          <div>
+            <h3>影片中的示範方向</h3>
+            <ul class="checklist">
+              <li>製作一個精美的靜態網站</li>
+              <li>主題可設定為 AI 人工智慧與 Python 歷史</li>
+              <li>不管寫程式或解釋，都用繁體中文</li>
+              <li>輸出可直接用瀏覽器開啟的前端檔案</li>
+            </ul>
+          </div>
+          <div class="prompt-box">
+            <h3>建議補強</h3>
+            <p>
+              請產生純前端靜態網站，不要後端、不要資料庫。檔案結構保持簡單，
+              首頁命名為 index.html，手機與桌機都要能閱讀，最後列出需要上傳的檔案。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="fit section">
+        <div class="section__header">
+          <p class="section__number">05</p>
+          <h2>GitHub Pages 的前提是靜態網站</h2>
+        </div>
+        <div class="fit__columns">
+          <div>
+            <h3>適合上架</h3>
+            <div class="chips">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>圖片</span>
+              <span>字型</span>
+              <span>前端素材</span>
+            </div>
+          </div>
+          <div>
+            <h3>不適合直接上架</h3>
+            <div class="chips chips--warn">
+              <span>資料庫</span>
+              <span>伺服器程式</span>
+              <span>登入系統</span>
+              <span>後端 API</span>
+              <span>動態產頁</span>
+            </div>
+          </div>
+        </div>
+        <p class="note">如果 AI 產出的網站需要後端，應先改成純前端版本，或改用其他部署平台。</p>
+      </section>
+
+      <section class="deploy section" id="deploy">
+        <div class="section__header">
+          <p class="section__number">06</p>
+          <h2>GitHub 端的設定重點是公開與分支部署</h2>
+        </div>
+        <ol class="timeline">
+          <li>登入 github.com 並建立新的 repository</li>
+          <li>Repository 設為 Public，避免 Pages 無法公開瀏覽</li>
+          <li>上傳 AI 產出的所有前端檔案</li>
+          <li>Commit 後進入 Settings &gt; Pages</li>
+          <li>Source 選 Deploy from a branch，分支選 main</li>
+        </ol>
+        <div class="repo-name">
+          <span>個人首頁 repo 名稱範例</span>
+          <strong>username.github.io</strong>
+        </div>
+      </section>
+
+      <section class="verify section" id="check">
+        <div class="section__header">
+          <p class="section__number">07</p>
+          <h2>部署成功後，要用 URL 做最後驗收</h2>
+        </div>
+        <div class="verify__grid">
+          <div class="qa">
+            <button class="qa__button" type="button" aria-expanded="true">看 Actions</button>
+            <p>確認部署流程完成，沒有紅色錯誤。</p>
+          </div>
+          <div class="qa">
+            <button class="qa__button" type="button" aria-expanded="true">回 Pages</button>
+            <p>GitHub Pages 頁面會顯示公開網址。</p>
+          </div>
+          <div class="qa">
+            <button class="qa__button" type="button" aria-expanded="true">開 URL</button>
+            <p>確認頁面可開啟，文字、圖片與互動都正常。</p>
+          </div>
+        </div>
+
+        <div class="interactive-check">
+          <h3>常見問題檢核</h3>
+          <label><input type="checkbox" /> 首頁檔名是 index.html</label>
+          <label><input type="checkbox" /> 所有檔案都已 commit</label>
+          <label><input type="checkbox" /> Pages 分支選 main</label>
+          <label><input type="checkbox" /> 網站沒有引用本機路徑</label>
+          <label><input type="checkbox" /> 專案不需要後端</label>
+          <div class="progress">
+            <span id="progressText">完成 0 / 5</span>
+            <div class="progress__bar"><span id="progressBar"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary section">
+        <div class="section__header">
+          <p class="section__number">08</p>
+          <h2>把影片方法轉成自己的工作清單</h2>
+        </div>
+        <p class="summary__lead">
+          這套流程最適合用來快速展示作品原型：AI 生成、人工確認、GitHub 公開部署。
+        </p>
+        <ul class="summary__list">
+          <li>先確認需求是否能做成靜態網站</li>
+          <li>提示詞要求輸出可部署的前端檔案</li>
+          <li>本機開啟 index.html 先驗收</li>
+          <li>再上傳 GitHub 並啟用 Pages</li>
+        </ul>
+        <blockquote>把 AI 做出的本機網頁，轉成任何人都能打開的公開連結。</blockquote>
+        <p class="source">資料來源：YouTube 影片 LpJ-tq8pwwM、繁中字幕、影片描述。</p>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#top">回到頂部</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
