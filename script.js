@@ -1,3 +1,61 @@
+const AUTH_USER_HASH = "0cb89110978ae58d934adac55e243bcaa05ed57b67beb8dac270f6e807242022";
+const AUTH_PASSWORD_HASH = "ddd35325925a90ebce0a66e51a7c6f7540c9c2be359d28ec4f77ead25560f613";
+const AUTH_STORAGE_KEY = "vibe-authenticated";
+
+const authForm = document.querySelector("#authForm");
+const authUser = document.querySelector("#authUser");
+const authPassword = document.querySelector("#authPassword");
+const authError = document.querySelector("#authError");
+const logoutButton = document.querySelector("#logoutButton");
+
+async function hashText(value) {
+  const data = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return [...new Uint8Array(digest)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+function setAuthenticated(isAuthenticated) {
+  document.body.classList.toggle("auth-locked", !isAuthenticated);
+  document.body.classList.toggle("auth-ready", isAuthenticated);
+
+  if (isAuthenticated) {
+    localStorage.setItem(AUTH_STORAGE_KEY, "true");
+  } else {
+    localStorage.removeItem(AUTH_STORAGE_KEY);
+    authPassword.value = "";
+    authUser.focus();
+  }
+}
+
+authForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  authError.hidden = true;
+
+  const [userHash, passwordHash] = await Promise.all([
+    hashText(authUser.value.trim()),
+    hashText(authPassword.value)
+  ]);
+
+  if (userHash === AUTH_USER_HASH && passwordHash === AUTH_PASSWORD_HASH) {
+    setAuthenticated(true);
+    return;
+  }
+
+  authError.hidden = false;
+  authPassword.value = "";
+  authPassword.focus();
+});
+
+logoutButton.addEventListener("click", () => setAuthenticated(false));
+
+if (localStorage.getItem(AUTH_STORAGE_KEY) === "true") {
+  setAuthenticated(true);
+} else {
+  setAuthenticated(false);
+}
+
 const steps = [
   {
     title: "下提示詞",

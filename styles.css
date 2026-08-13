@@ -37,6 +37,77 @@ input {
   font: inherit;
 }
 
+input {
+  width: 100%;
+}
+
+.auth-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: var(--white);
+  background:
+    linear-gradient(120deg, rgba(10, 18, 29, 0.92), rgba(16, 76, 120, 0.78)),
+    url("assets/ppt-image-1.png") center / cover;
+}
+
+.auth-panel {
+  width: min(420px, 100%);
+  padding: clamp(26px, 5vw, 42px);
+  background: rgba(13, 21, 29, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.auth-panel h1 {
+  margin-bottom: 24px;
+  font-size: clamp(2rem, 6vw, 3.1rem);
+}
+
+.auth-form {
+  display: grid;
+  gap: 10px;
+}
+
+.auth-form label {
+  font-weight: 800;
+}
+
+.auth-form input {
+  min-height: 46px;
+  padding: 10px 12px;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0;
+}
+
+.auth-form input:focus {
+  outline: 3px solid rgba(182, 217, 87, 0.45);
+  outline-offset: 2px;
+}
+
+.auth-error {
+  margin: 4px 0;
+  color: #ffd0c4;
+  font-weight: 800;
+}
+
+.auth-submit {
+  margin-top: 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+.auth-ready .auth-screen,
+.auth-locked .hero,
+.auth-locked main,
+.auth-locked footer {
+  display: none;
+}
+
 .hero {
   position: relative;
   min-height: 92vh;
@@ -84,9 +155,19 @@ input {
 
 .topbar__links {
   display: flex;
+  align-items: center;
   gap: 18px;
   color: rgba(255, 255, 255, 0.86);
   font-size: 0.95rem;
+}
+
+.nav-button {
+  min-height: 36px;
+  padding: 6px 12px;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  cursor: pointer;
 }
 
 .hero__content {

@@ -6,7 +6,24 @@
     <title>Vibe Code 網頁上架互動指南</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="auth-locked">
+    <section class="auth-screen" id="authScreen" aria-labelledby="authTitle">
+      <div class="auth-panel">
+        <p class="eyebrow">PRIVATE ACCESS</p>
+        <h1 id="authTitle">身分驗證</h1>
+        <form class="auth-form" id="authForm">
+          <label for="authUser">帳號</label>
+          <input id="authUser" name="username" type="text" autocomplete="username" required />
+
+          <label for="authPassword">密碼</label>
+          <input id="authPassword" name="password" type="password" autocomplete="current-password" required />
+
+          <p class="auth-error" id="authError" role="alert" hidden>帳號或密碼不正確。</p>
+          <button class="button button--primary auth-submit" type="submit">登入</button>
+        </form>
+      </div>
+    </section>
+
     <header class="hero" id="top">
       <img class="hero__image" src="assets/ppt-image-1.png" alt="Vibe Code 網頁上架示意圖" />
       <div class="hero__shade"></div>
@@ -17,6 +34,7 @@
           <a href="#workflow">流程</a>
           <a href="#deploy">部署</a>
           <a href="#check">驗收</a>
+          <button class="nav-button" id="logoutButton" type="button">登出</button>
         </div>
       </nav>
       <div class="hero__content">
